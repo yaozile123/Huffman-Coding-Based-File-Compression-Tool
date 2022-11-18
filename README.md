@@ -18,10 +18,6 @@ In this project, we strictly follow the huffman algorithm. Below are the procedu
 - Read one byte step by step and decompressed the whole files.
 
 ## Performance
-- TXT files
-
-- DOC files
-
-- Multiple files
+  
 
 
