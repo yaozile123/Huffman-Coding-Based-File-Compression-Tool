@@ -292,7 +292,7 @@ void encoding(FILE* fr,FILE*fw, unordered_map<char, string>map) {
 int main() {
 	// we will first store 3 unsigned int to our header, 
     // which are the length of file,length of header and the length of characters
-	const char* file_name = "/Users/zileyao/Documents/c++/test_file/test.txt";
+	const char* file_name = "test.txt";
     	FILE* input = fopen(file_name, "rb");
 	int result = open_file(input);
 	if (result == -1){
@@ -309,7 +309,7 @@ int main() {
     	int map_length = encoding_map.size();
 	string compressed_tree = compress_huffman_tree("", huffman_heap.top());
 	compressed_tree += '0';
-	const char* output_file = "/Users/zileyao/Documents/c++/test_file/test_output.txt";
+	const char* output_file = "test_output.txt";
 	FILE* output = fopen(output_file, "wb");
 	fwrite(&file_len, sizeof(unsigned int), 1, output);
 	unsigned int header_len = get_header_length(0, huffman_heap.top());
