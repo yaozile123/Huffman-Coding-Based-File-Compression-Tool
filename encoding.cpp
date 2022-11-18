@@ -176,7 +176,7 @@ void write_header(FILE* fw,string str) {
 	int idx = 0;
 	unsigned char buff;
 	int ascii_value;
-    bool flag = true;
+    	bool flag = true;
 	string bin;
 	for (int i = 0;i < str.size();i++) {
         if (flag == true) {
@@ -236,17 +236,17 @@ int open_file(FILE* input){
 }
 
 int count_length(FILE* input){
-    // count the length of input file
-    fseek(input, 0L, SEEK_END);
+    	// count the length of input file
+    	fseek(input, 0L, SEEK_END);
 	unsigned int file_len = ftell(input);
 	if (fseek(input, 0, SEEK_SET) != 0) {
 		cout << "failed to rewind the pointer for input file" << endl;
-        return -1;
+	return -1;
 	}
-    else{
-        cout << "the input file has total " << file_len << " bytes" << endl;
-        return file_len;
-    }
+	else{
+	cout << "the input file has total " << file_len << " bytes" << endl;
+	return file_len;
+	}
 }
 
 
@@ -256,7 +256,7 @@ void encoding(FILE* fr,FILE*fw, unordered_map<char, string>map) {
 	char str;
 	int idx = 0;
 	string tmp = "00000000";
-    fseek(fr, 0, SEEK_SET); //set the pointer to the beginning of our input file
+    	fseek(fr, 0, SEEK_SET); //set the pointer to the beginning of our input file
 	unsigned char buff;
 	string huff_code;
 	while (1) {
@@ -293,20 +293,20 @@ int main() {
 	// we will first store 3 unsigned int to our header, 
     // which are the length of file,length of header and the length of characters
 	const char* file_name = "/Users/zileyao/Documents/c++/test_file/test.txt";
-    FILE* input = fopen(file_name, "rb");
+    	FILE* input = fopen(file_name, "rb");
 	int result = open_file(input);
-    if (result == -1){
-        return 0;
-    }
+	if (result == -1){
+		return 0;
+	}
 	int file_len = count_length(input);
-    if (file_len == -1){
-        return 0;
-    } 
+    	if (file_len == -1){
+        	return 0;
+    	} 
 	unordered_map<char, int> frequency_table = build_frequency_table(input);
 	priority_queue<minheapnode*, vector<minheapnode*>, compare> huffman_heap = build_huffman_heap(frequency_table);
 	unordered_map<char, string> encoding_map;
 	encoding_map = build_encoding_map(huffman_heap.top(), "", encoding_map);
-    int map_length = encoding_map.size();
+    	int map_length = encoding_map.size();
 	string compressed_tree = compress_huffman_tree("", huffman_heap.top());
 	compressed_tree += '0';
 	const char* output_file = "/Users/zileyao/Documents/c++/test_file/test_output.txt";
@@ -322,7 +322,7 @@ int main() {
 	}
 	cout << "the header has total " << header_len << " bytes" << endl;
 	fwrite(&header_len, sizeof(unsigned int), 1, output);
-    fwrite(&map_length, sizeof(unsigned int), 1, output);
+    	fwrite(&map_length, sizeof(unsigned int), 1, output);
 	write_header(output,compressed_tree);
 	encoding(input, output, encoding_map);
 	fclose(input);
