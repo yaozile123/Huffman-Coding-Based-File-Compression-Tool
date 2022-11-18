@@ -21,6 +21,6 @@ In this project, we strictly follow the huffman algorithm. Below are the procedu
 Download encoding.cpp,encoding.h and decoding.cpp. Then choose the file you want to compress/decompress and run encoding and decoding. Hope you guys will enjoy it! If you find any questions/bugs, please contact me via yaozl2000@163.com.
 
 ## Performance
-  
+<img src='test_files/performance_bar.jpg'>
 
 
