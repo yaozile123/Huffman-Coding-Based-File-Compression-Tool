@@ -146,8 +146,8 @@ void decoding(FILE* fr, FILE* fw,unordered_map<string, char> map,int file_len) {
 
 int main() {
 	// open the input and output file
-	const char* input_file = "/Users/zileyao/Documents/c++/test_file/test_output.txt";
-	const char* output_file= "/Users/zileyao/Documents/c++/test_file/test_output_decoded.txt";
+	const char* input_file = "test_output.txt";
+	const char* output_file= "test_output_decoded.txt";
 	FILE* input = fopen(input_file, "rb");
 	int result = open_file(input);
 	if (result == -1){
